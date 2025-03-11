@@ -129,7 +129,7 @@ class Snake:
         self.direction = random.choice([(0, 1), (0, -1), (1, 0), (-1, 0)])
         self.score = 0
         self.growing = False
-        self.speed_boost = 1.0
+        self.speed_boost = 2.0
         self.invincible = False
         self.effects = []
         self.rainbow_mode = False
@@ -259,7 +259,7 @@ class Game:
     
     def handle_power_up_collision(self, power_up: PowerUp):
         if power_up.type == 'speed':
-            self.snake.speed_boost = 2.0
+            self.snake.speed_boost = 3.0
             self.speed_timer = self.power_up_duration
             self.effects.append(ParticleEffect(
                 power_up.x * GRID_SIZE, power_up.y * GRID_SIZE, BLUE))
@@ -283,7 +283,7 @@ class Game:
         if self.speed_timer > 0:
             self.speed_timer -= 1
             if self.speed_timer == 0:
-                self.snake.speed_boost = 1.0
+                self.snake.speed_boost = 2.0
                 
         if self.invincibility_timer > 0:
             self.invincibility_timer -= 1
